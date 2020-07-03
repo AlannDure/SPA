@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="description" content="Demonstrates the use of Google Cloud Database with a Firebase DB">
+    <!-- Disable tap highlight on IE -->
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Firebase Database Quickstart">
+    <meta name="theme-color" content="#303F9F">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Firebase Database Quickstart">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#303F9F">
+
+    <!-- Tile icon for Win8 -->
+    <meta name="msapplication-TileColor" content="#3372DF">
+    <meta name="msapplication-navbutton-color" content="#303F9F">
+
+    <!-- Material Design Lite -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.blue_grey-orange.min.css">
+    <script src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="apple-touch-icon" href="img/iconfinder_Spok_star_treck_movie_geek_3151558.png">
+    <link rel="apple-touch-icon" href="img/iconfinder_Spok_star_treck_movie_geek_3151558.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="img/iconfinder_Spok_star_treck_movie_geek_3151558.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="img/iconfinder_Spok_star_treck_movie_geek_3151558.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="img/iconfinder_Spok_star_treck_movie_geek_3151558.png">
+    <link rel=”shortcut icon” type=”image/png” href=”public/favicon.ico”/> <link rel="stylesheet"
+        href="styles/main.css">
+    <title>NYSL</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="row d-flex justify-content-center">
+            <section id="page-splash">
+                <div class="col-12 d-flex justify-content-center">
+                    <button id="sign-in-button"
+                        class="mdl-button--raised mdl-button mdl-js-button mdl-js-ripple-effect"><i
+                            class="material-icons">account_circle</i>Sign in with Google</button>
+                    <button id="sign-in-button2"
+                        class="mdl-button--raised mdl-button mdl-js-button mdl-js-ripple-effect"><i
+                            class="material-icons">account_circle</i>Sign in with Email</button>
+                </div>
+            </section>
+        </div>
+
+        <div class="row d-flex justify-content-center mt-3">
+            <div id="form" class="col-md-6 d-none">
+                <form class="d-flex justify-content-center"> 
+                    <label>E-Mail: <input type="text" id="email" name="mail"
+                            placeholder="something@something.com"></label>
+                    <label>Passw: <input type="password" id="pass" name="password" placeholder="something****"></label>
+                    <div class=" d-inline-flex">
+                        <button type="button" id="registrar" class="btn btn-primary btn-sm">Register</button>
+                        <button type="button" id="login" class="btn btn-success btn-sm">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-center">
+            <div class="col-12 md-6 d-flex justify-content-center">
+                <img id="logo" src="img/nysl_logo.png" alt="logo nysl">
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-center mt-3">
+            <div class="col-12 col-md-6">
+                <nav class="navbar navbar-dark bg-dark justify-content-center">
+                    <div> NYSL </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <button class="btn btn-secondary btn-sm" type="button" onclick="mostrarHome()">Home</button>
+                            <button class="btn btn-secondary btn-sm" type="button" onclick="mostrarGame()">Games
+                                Info</button>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div id="index">
+            <div class="row d-flex justify-content-center">
+                <div class="col-12 col-md-6">
+                    <div class="cardast">
+                        <div class="card-body">
+                            <h2>Mission</h2>
+                            To support young athletes living in chicago's neighborhoods, who have interest in learning
+                            and
+                            playing soccer, with opportunities to learn and practice skills related to the game of
+                            soccer,
+                            specially those skills around team cooperation and good sportsmanship.
+                        </div>
+                    </div>
+
+                    <div class="cardast">
+                        <div class="card-body">
+                            <h2>Vision</h2>
+                            The northside Youth Soccer League aspires to develop strong, well-rounded, and mindful
+                            athletes
+                            through the building of caracter, self-discipline, and leadership.
+                        </div>
+                    </div>
+
+                    <div class="cardast">
+                        <div class="card-body">
+                            <h2>General Information</h2>
+                            The Northside Youth Soccer League was established in 1996 to provide ahtletes residing in
+                            Chicago's northside neighborhoods an enviroment in which to learn and play soccer. To be a
+                            member of NYSL, you must be between the ages of 4 - 12 and reside in a Chicago northside
+                            neighborhood NYSL is ran by a small full-time staff, and relies on the generous volunteer
+                            time of parents and previous league members.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="games" class="d-none">
+            <div class="row">
+                <div class="col-12 col-md-6 mt-3">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>SEPTEMBER</th>
+                                <th>TEAMS</th>
+                                <th>LOCATION</th>
+                                <th>TIMES</th>
+                                <th>CHAT</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td rowspan="2">9/01</td>
+                                <td>U1 and U4</td>
+                                <td><a href="https://goo.gl/maps/xu11ux8S6v4s1rxJ7" target="_blank"
+                                        class="btn btn-secondary btn-sm" active role="button" aria-pressed="true">AJ
+                                        Katzenmaier
+                                        Elementary</a></td>
+                                <td>9:30 a.m.</td>
+                                <td><button class="btn btn-secondary btn-sm"
+                                        onclick="mostrarChat('juego1')">SEND📬</button></td>
+                            </tr>
+                            <tr>
+                                <td>U3 and U2</td>
+                                <td><a href="https://goo.gl/maps/jFvpnoVde2YGsRv16" target="_blank"
+                                        class="btn btn-secondary btn-sm" active role="button"
+                                        aria-pressed="true">Greenbay Elementary</a></td>
+                                <td>1:00 p.m.</td>
+                                <td><button class="btn btn-secondary btn-sm"
+                                        onclick="mostrarChat('juego2')">SEND📬</button></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">9/08</td>
+                                <td>U5 and U6</td>
+                                <td><a href="https://goo.gl/maps/9jQG8oUEMHzZ7xnJ8" target="_blank"
+                                        class="btn btn-secondary btn-sm" active role="button" aria-pressed="true">Howard
+                                        A Yeager</a></td>
+                                <td>9:30 a.m.</td>
+                                <td><button class="btn btn-secondary btn-sm"
+                                        onclick="mostrarChat('juego3')">SEND📬</button></td>
+                            </tr>
+                            <tr>
+                                <td>U6 and U1</td>
+                                <td><a href="https://goo.gl/maps/Comonk1f391LHAdG7" target="_blank"
+                                        class="btn btn-secondary btn-sm" active role="button"
+                                        aria-pressed="true">Marjorie P Hart</a></td>
+                                <td>1:00 p.m.</td>
+                                <td><button class="btn btn-secondary btn-sm"
+                                        onclick="mostrarChat('juego4')">SEND📬</button></td>
+                            <tr>
+                                <td rowspan="2">9/15</td>
+                                <td>U2 and U4</td>
+                                <td><a href="https://goo.gl/maps/taKjq1msrTQmPqwW6" target="_blank"
+                                        class="btn btn-secondary btn-sm" active role="button"
+                                        aria-pressed="true">North</a></td>
+                                <td>9:30 a.m.</td>
+                                <td><button class="btn btn-secondary btn-sm"
+                                        onclick="mostrarChat('juego5')">SEND📬</button></td>
+                            </tr>
+                            <tr>
+                                <td>U3 and U5</td>
+                                <td><a href="https://goo.gl/maps/xu11ux8S6v4s1rxJ7" target="_blank"
+                                        class="btn btn-secondary btn-sm" active role="button" aria-pressed="true">AJ
+                                        Katzenmaier
+                                        Elementary</a></td>
+                                <td>1:00 p.m.</td>
+                                <td><button class="btn btn-secondary btn-sm"
+                                        onclick="mostrarChat('juego6')">SEND📬</button></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">9/22</td>
+                                <td>U1 and U3</td>
+                                <td><a href="https://goo.gl/maps/6UaHCCViPwdEYpjT6" target="_blank"
+                                        class="btn btn-secondary btn-sm" active role="button"
+                                        aria-pressed="true">South</a></td>
+                                <td>9:30 a.m.</td>
+                                <td><button class="btn btn-secondary btn-sm"
+                                        onclick="mostrarChat('juego7')">SEND📬</button></td>
+                            </tr>
+                            <tr>
+                                <td>U2 and U6</td>
+                                <td><a href="https://goo.gl/maps/9jQG8oUEMHzZ7xnJ8" target="_blank"
+                                        class="btn btn-secondary btn-sm" active role="button" aria-pressed="true">Howard
+                                        A Yeager</a></td>
+                                <td>1:00 p.m.</td>
+                                <td><button class="btn btn-secondary btn-sm"
+                                        onclick="mostrarChat('juego8')">SEND📬</button></td>
+                            </tr>
+                            <tr>
+                                <td>9/29</td>
+                                <td>U4 and U5</td>
+                                <td><a href="https://goo.gl/maps/jFvpnoVde2YGsRv16" target="_blank"
+                                        class="btn btn-secondary btn-sm" active role="button"
+                                        aria-pressed="true">Greenbay Elementary</a></td>
+                                <td>9:30 a.m.</td>
+                                <td><button class="btn btn-secondary btn-sm"
+                                        onclick="mostrarChat('juego9')">SEND📬</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-12 col-md-6 mt-3">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>OCTOBER</th>
+                                <th>TEAMS</th>
+                                <th>LOCATION</th>
+                                <th>TIMES</th>
+                                <th>CHAT</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td rowspan="2">10/6</td>
+                                <td>U2 and U5</td>
+                                <td><a href="https://goo.gl/maps/Comonk1f391LHAdG7" target="_blank"
+                                        class="btn btn-secondary btn-sm" active role="button"
+                                        aria-pressed="true">Marjorie P Hart</a></td>
+                                <td>9:30 a.m.</td>
+                                <td><button class="btn btn-secondary btn-sm"
+                                        onclick="mostrarChat('juego10')">SEND📬</button></td>
+                            </tr>
+                            <tr>
+                                <td>U1 and U6</td>
+                                <td><a href="https://goo.gl/maps/6UaHCCViPwdEYpjT6" target="_blank"
+                                        class="btn btn-secondary btn-sm" active role="button"
+                                        aria-pressed="true">South</a></td>
+                                <td>1:00 p.m.</td>
+                                <td><button class="btn btn-secondary btn-sm"
+                                        onclick="mostrarChat('juego11')">SEND📬</button></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">10/13</td>
+                                <td>U3 and U4</td>
+                                <td><a href="https://goo.gl/maps/9jQG8oUEMHzZ7xnJ8" target="_blank"
+                                        class="btn btn-secondary btn-sm" active role="button" aria-pressed="true">Howard
+                                        A Yeager</a></td>
+                                <td>9:30 a.m.</td>
+                                <td><button class="btn btn-secondary btn-sm"
+                                        onclick="mostrarChat('juego12')">SEND📬</button></td>
+                            </tr>
+                            <tr>
+                                <td>U5 and U1</td>
+                                <td><a href="https://goo.gl/maps/jFvpnoVde2YGsRv16" target="_blank"
+                                        class="btn btn-secondary btn-sm" active role="button"
+                                        aria-pressed="true">Greenbay Elementary</a></td>
+                                <td>1:00 p.m.</td>
+                                <td><button class="btn btn-secondary btn-sm"
+                                        onclick="mostrarChat('juego13')">SEND📬</button></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">10/20</td>
+                                <td>U6 and U3</td>
+                                <td><a href="https://goo.gl/maps/taKjq1msrTQmPqwW6" target="_blank"
+                                        class="btn btn-secondary btn-sm" active role="button"
+                                        aria-pressed="true">North</a></td>
+                                <td>9:30 a.m.</td>
+                                <td><button class="btn btn-secondary btn-sm"
+                                        onclick="mostrarChat('juego14')">SEND📬</button></td>
+                            </tr>
+                            <tr>
+                                <td>U2 and U4</td>
+                                <td><a href="https://goo.gl/maps/Comonk1f391LHAdG7" target="_blank"
+                                        class="btn btn-secondary btn-sm" active role="button"
+                                        aria-pressed="true">Marjorie P Hart</a></td>
+                                <td>1:00 p.m.</td>
+                                <td><button class="btn btn-secondary btn-sm"
+                                        onclick="mostrarChat('juego15')">SEND📬</button></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">10/27</td>
+                                <td>U3 and U1</td>
+                                <td><a href="https://goo.gl/maps/xu11ux8S6v4s1rxJ7" target="_blank"
+                                        class="btn btn-secondary btn-sm" active role="button" aria-pressed="true">AJ
+                                        Katzenmaier
+                                        Elementary</a></td>
+                                <td>9:30 a.m.</td>
+                                <td><button class="btn btn-secondary btn-sm"
+                                        onclick="mostrarChat('juego16')">SEND📬</button></td>
+                            </tr>
+                            <tr>
+
+                                <td>U5 and U6</td>
+                                <td><a href="https://goo.gl/maps/9jQG8oUEMHzZ7xnJ8" target="_blank"
+                                        class="btn btn-secondary btn-sm" active role="button" aria-pressed="true">Howard
+                                        A Yeager</a></td>
+                                <td>1:00 p.m.</td>
+                                <td><button class="btn btn-secondary btn-sm"
+                                        onclick="mostrarChat('juego17')">SEND📬</button></td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+
+            </div>
+
+            <div class="row d-flex justify-content-center">
+                <div class="col-12 col-md-6">
+                    <p>
+                        <a class="btn btn-dark" data-toggle="collapse" href="#multiCollapseExample1" role="button"
+                            aria-expanded="false" aria-controls="multiCollapseExample1">AJ Katzenmaier
+                            Elementary</a>
+                    </p>
+                    <div class="collapse multi-collapse" id="multiCollapseExample1">
+                        <div class="card card-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <iframe
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2969.6542461109857!2d-87.63123908465629!3d41.90029237922044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd34e07f6bac3%3A0x68a82e5d59952c86!2s24%20W%20Walton%20St%2C%20Chicago%2C%20IL%2060610%2C%20EE.%20UU.!5e0!3m2!1ses!2sar!4v1579111770629!5m2!1ses!2sar"
+                                        width="400" height="300" frameborder="0" style="border:0;"
+                                        allowfullscreen=""></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p>
+                        <a class="btn btn-dark" data-toggle="collapse" href="#multiCollapseExample2" role="button"
+                            aria-expanded="false" aria-controls="multiCollapseExample1">Greenbay Elementary</a>
+                    </p>
+                    <div class="collapse multi-collapse" id="multiCollapseExample2">
+                        <div class="card card-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <iframe
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2969.0258843688557!2d-87.64002798465584!3d41.9138022792194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd34073f306a3%3A0x9e1726bbf8f23f0e!2s1734%20N%20Orleans%20St%2C%20Chicago%2C%20IL%2060614%2C%20EE.%20UU.!5e0!3m2!1ses!2sar!4v1579112958243!5m2!1ses!2sar"
+                                        width="400" height="300" frameborder="0" style="border:0;"
+                                        allowfullscreen=""></iframe>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p>
+                        <a class="btn btn-dark" data-toggle="collapse" href="#multiCollapseExample3" role="button"
+                            aria-expanded="false" aria-controls="multiCollapseExample1">Howard A Yeager
+                            Elementary</a>
+                    </p>
+                    <div class="collapse multi-collapse" id="multiCollapseExample3">
+                        <div class="card card-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <iframe
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2968.585683085619!2d-87.66511458465553!3d41.92326457921864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd2e37f9b8d2d%3A0x62ad8b907dd755d6!2s2245%20N%20Southport%20Ave%2C%20Chicago%2C%20IL%2060614%2C%20EE.%20UU.!5e0!3m2!1ses!2sar!4v1579112068616!5m2!1ses!2sar"
+                                        width="400" height="300" frameborder="0" style="border:0;"
+                                        allowfullscreen=""></iframe>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <p>
+                        <a class="btn btn-dark" data-toggle="collapse" href="#multiCollapseExample4" role="button"
+                            aria-expanded="false" aria-controls="multiCollapseExample1">Marjorie P Hart
+                            Elementary</a>
+                    </p>
+                    <div class="collapse multi-collapse" id="multiCollapseExample4">
+                        <div class="card card-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <iframe
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2968.2919146584327!2d-87.6480862846553!3d41.92957827921812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd30f2630e551%3A0x3e719e44a5cef714!2s2625%20N%20Orchard%20St%2C%20Chicago%2C%20IL%2060614%2C%20EE.%20UU.!5e0!3m2!1ses!2sar!4v1579112137408!5m2!1ses!2sar"
+                                        width="400" height="300" frameborder="0" style="border:0;"
+                                        allowfullscreen=""></iframe>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p>
+                        <a class="btn btn-dark" data-toggle="collapse" href="#multiCollapseExample5" role="button"
+                            aria-expanded="false" aria-controls="multiCollapseExample1">North Elementary</a>
+                    </p>
+                    <div class="collapse multi-collapse" id="multiCollapseExample5">
+                        <div class="card card-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <iframe
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2969.3377393845913!2d-87.64837698465605!3d41.907097779219754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd33af0e6ccc3%3A0x26c81c1d557667da!2s1409%20N%20Ogden%20Ave%2C%20Chicago%2C%20IL%2060610%2C%20EE.%20UU.!5e0!3m2!1ses!2sar!4v1579112186274!5m2!1ses!2sar"
+                                        width="400" height="300" frameborder="0" style="border:0;"
+                                        allowfullscreen=""></iframe>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p>
+                        <a class="btn btn-dark" data-toggle="collapse" href="#multiCollapseExample6" role="button"
+                            aria-expanded="false" aria-controls="multiCollapseExample1">South Elementary</a>
+                    </p>
+                    <div class="collapse multi-collapse" id="multiCollapseExample6">
+                        <div class="card card-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <iframe
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2968.747950525066!2d-87.65355538465563!3d41.91977677921894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd3196fb41dc7%3A0x970be7f7d6336df5!2s2101%20N%20Fremont%20St%2C%20Chicago%2C%20IL%2060614%2C%20EE.%20UU.!5e0!3m2!1ses!2sar!4v1579112232430!5m2!1ses!2sar"
+                                        width="400" height="300" frameborder="0" style="border:0;"
+                                        allowfullscreen=""></iframe>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="chat" class="d-none row justify-content-center mt-3">
+            <div class="col-12 col-md-6">
+                <!-- Header section containing logo and menu -->
+                <header class="header mdl-layout__header mdl-color-text--white mdl-color--light-blue-700">
+                    <div class="mdl-layout__header-row titlebar">
+                        <h3 class="logo">NYSL CHAT</h3>
+                        <button id="sign-out-button"
+                            class="mdl-button--raised mdl-button mdl-js-button mdl-js-ripple-effect"><i
+                                class="material-icons">account_circle</i> Sign out</button>
+                    </div>
+                    <!-- Navigation Bar -->
+                    <div class="tab mdl-layout__header-row mdl-color--light-blue-600">
+                        <div class="mdl-tab">
+                            <div id="menu-recent"
+                                class="mdl-layout__tab is-active mdl-button mdl-js-button mdl-js-ripple-effect">
+                                <i class="material-icons">new_releases</i> Recent
+                            </div>
+                            <div id="menu-my-posts"
+                                class="mdl-layout__tab mdl-button mdl-js-button mdl-js-ripple-effect">
+                                <i class="material-icons">home</i> My posts
+                            </div>
+                            <div id="menu-my-top-posts"
+                                class="mdl-layout__tab mdl-button mdl-js-button mdl-js-ripple-effect">
+                                <i class="material-icons">trending_up</i> My top posts
+                            </div>
+                            <button
+                                class="mdl-button mdl-js-button mdl-button--fab mdl-color--amber-400 mdl-shadow--4dp mdl-js-ripple-effect"
+                                id="add">
+                                <i class="material-icons">mode_edit</i>
+                            </button>
+                        </div>
+                    </div>
+                </header>
+                <main class="mdl-layout__content mdl-color--grey-100">
+                    <!-- Show the add post form -->
+                    <section class="mdl-grid content" id="add-post" style="display:none">
+                        <div class="mdl-cell mdl-cell--12-col mdl-grid">
+                            <!-- Card containing the inputs to add a new messages -->
+                            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet
+                mdl-cell--6-col-desktop">
+                                <div class="mdl-card__title mdl-color--light-blue-600 mdl-color-text--white">
+                                    <h2 class="mdl-card__title-text">New Post</h2>
+                                </div>
+                                <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+                                    <form id="message-form" action="#">
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                            <input class="mdl-textfield__input" type="text" id="new-post-title">
+                                            <label class="mdl-textfield__label" for="new-post-title">Post
+                                                title...</label>
+                                        </div>
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                            <textarea class="mdl-textfield__input" rows="3"
+                                                id="new-post-message"></textarea>
+                                            <label class="mdl-textfield__label" for="new-post-message">Post
+                                                message...</label>
+                                        </div>
+                                        <button type="submit"
+                                            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                                            Add post
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Show a list of recent posts -->
+                    <section class="mdl-grid content" id="recent-posts-list" style="display:none">
+                        <div class="posts-container mdl-cell mdl-cell--12-col mdl-grid">
+                        </div>
+                    </section>
+
+                    <!-- Show the list of user's posts -->
+                    <section class="mdl-grid content" id="user-posts-list" style="display:none">
+                        <div class="posts-container mdl-cell mdl-cell--12-col mdl-grid">
+                        </div>
+                    </section>
+
+                    <!-- Show the list of top user's posts -->
+                    <section class="mdl-grid content" id="top-user-posts-list" style="display:none">
+                        <div class="posts-container mdl-cell mdl-cell--12-col mdl-grid">
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-analytics.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDUvN6axuKlFN7xMPkfwMc_8jhT8DRwzQs",
+            authDomain: "proyecto-b4e59.firebaseapp.com",
+            databaseURL: "https://proyecto-b4e59.firebaseio.com",
+            projectId: "proyecto-b4e59",
+            storageBucket: "proyecto-b4e59.appspot.com",
+            messagingSenderId: "244504128610",
+            appId: "1:244504128610:web:13737b046daa09fc44353b",
+            measurementId: "G-Z1P8PE5ST6"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+    </script>
+    <script src="/__/firebase/7.9.1/firebase-app.js"></script>
+    <script src="/__/firebase/7.9.1/firebase-auth.js"></script>
+    <script src="/__/firebase/7.9.1/firebase-database.js"></script>
+    <script src="/__/firebase/init.js"></script>
+    <script src="scripts/main.js"></script>
+
+</body>
+
+</html>
